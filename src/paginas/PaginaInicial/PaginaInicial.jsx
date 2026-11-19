@@ -1,42 +1,53 @@
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
 import Principal from "../../componentes/Principal/Principal";
 import { useNavigate } from "react-router-dom";
-import "./PaginaInicial.css"; // Certifique-se de importar o CSS da página
+import "./PaginaInicial.css"; 
+// 1. Importando os ícones do react-icons
+import { FaGamepad, FaTrophy } from "react-icons/fa";
 
 function PaginaInicial() {
   const navigate = useNavigate();
 
   return (
-    <Principal titulo="Página Inicial">
-      {/* Container Grid que vai deixar 2 botões por linha */}
+    <Principal titulo="Home">
       <div className="container-botoes">
+        
+        {/* Botão de Conquistas (com Troféu) */}
         <BotaoCustomizado
           tipo="telaInicial"
           aoClicar={() => navigate("/lista-produtos")}
         >
-          Conquistas
+          <FaTrophy size={48} color="#f2c94c" />
+          <span>Conquistas</span>
         </BotaoCustomizado>
 
+        {/* Botão de Taxa de Vitória (com o texto de 68%) */}
         <BotaoCustomizado
           tipo="telaInicial"
           aoClicar={() => navigate("/lista-tarefas")}
         >
-          Taxa De Vitoria
+          <span style={{ fontSize: '32px', fontWeight: 'bold' }}>68%</span>
+          <span>Taxa De Vitoria</span>
         </BotaoCustomizado>
 
+        {/* Botão de Cadastrar Jogo (com Controle) */}
         <BotaoCustomizado
           tipo="telaInicial"
           aoClicar={() => navigate("/cadastro-cliente")}
         >
-          Cadastrar Jogo
+          <FaGamepad size={48} color="#9b51e0" />
+          <span>Cadastrar Jogo</span>
         </BotaoCustomizado>
 
+        {/* Botão de Meus Jogos (com Controle) */}
         <BotaoCustomizado
           tipo="telaInicial"
           aoClicar={() => navigate("/lista-clientes")}
         >
-          Meus Jogos
+          <FaGamepad size={48} color="#9b51e0" />
+          <span>Meus Jogos</span>
         </BotaoCustomizado>
+        
       </div>
     </Principal>
   );
