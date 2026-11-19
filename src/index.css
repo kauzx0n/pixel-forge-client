@@ -30,10 +30,10 @@ a {
     --cor-secundaria: #2e2e2e;
     --cor-secundaria-escura: #ff6d00;
 
-    --cor-fundo-padrao: #f7f7f7;
+    --cor-fundo-padrao: #26272A;
 
-    --cor-texto-padrao: #1c2025;
-    --cor-texto-claro: #fff;
+    --cor-texto-padrao: #2f2c33;
+    --cor-texto-claro: #ffffff;
 
     --cor-info: #0288d1;
     --cor-sucesso: #1aa251;
@@ -41,4 +41,9 @@ a {
     --cor-erro: #eb0014;
 
     --cor-cinza: #99a7bb;
+}
+
+/* Adicione no final do seu arquivo CSS global */
+h1, h2, h3, label {
+  color: #e2e8f0; /* Um cinza clarinho muito elegante, perfeito para fundos escuros */
 }

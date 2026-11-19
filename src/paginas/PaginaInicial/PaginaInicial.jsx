@@ -2,17 +2,23 @@ import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizad
 import Principal from "../../componentes/Principal/Principal";
 import { useNavigate } from "react-router-dom";
 import "./PaginaInicial.css"; 
-// 1. Importando os ícones do react-icons
 import { FaGamepad, FaTrophy } from "react-icons/fa";
 
 function PaginaInicial() {
   const navigate = useNavigate();
 
   return (
-    <Principal titulo="Home">
+    <Principal>
+      
+
+      <h1 style={{ textAlign: "center", marginBottom: "30px", fontSize: "32px", fontFamily: "sans-serif" }}>
+        <span style={{ color: "#FFFFFF", fontWeight: "900" }}>GAME</span>
+        <span style={{ color: "#a855f7", fontWeight: "900" }}>HUB</span>
+      </h1>
+
       <div className="container-botoes">
         
-        {/* Botão de Conquistas (com Troféu) */}
+
         <BotaoCustomizado
           tipo="telaInicial"
           aoClicar={() => navigate("/lista-produtos")}
@@ -21,7 +27,7 @@ function PaginaInicial() {
           <span>Conquistas</span>
         </BotaoCustomizado>
 
-        {/* Botão de Taxa de Vitória (com o texto de 68%) */}
+
         <BotaoCustomizado
           tipo="telaInicial"
           aoClicar={() => navigate("/lista-tarefas")}
@@ -30,7 +36,7 @@ function PaginaInicial() {
           <span>Taxa De Vitoria</span>
         </BotaoCustomizado>
 
-        {/* Botão de Cadastrar Jogo (com Controle) */}
+
         <BotaoCustomizado
           tipo="telaInicial"
           aoClicar={() => navigate("/cadastro-cliente")}
@@ -39,7 +45,7 @@ function PaginaInicial() {
           <span>Cadastrar Jogo</span>
         </BotaoCustomizado>
 
-        {/* Botão de Meus Jogos (com Controle) */}
+
         <BotaoCustomizado
           tipo="telaInicial"
           aoClicar={() => navigate("/lista-clientes")}

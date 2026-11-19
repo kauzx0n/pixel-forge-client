@@ -3,7 +3,7 @@ import "./CampoCustomizado.css";
 function CampoCustomizado(props) {
   return (
     <div className="CampoCustomizado_root">
-      <span>{props.label}</span>
+      <label>{props.label}</label>
       <input {...props} className="CampoCustomizado_input" />
     </div>
   );

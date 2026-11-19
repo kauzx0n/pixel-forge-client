@@ -1,10 +1,17 @@
 .CampoCustomizado_root {
     display: flex;
     flex-direction: column;
+    gap: 3px; /* 1. Isto cria espaço entre o título e a caixinha branca dentro do mesmo campo */
+    margin-bottom: 6px; /* 2. Isto empurra o próximo campo lá para baixo, dando o tal respiro entre eles */
 }
 
 .CampoCustomizado_input {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 12px;
+}
+
+label {
+  display: block;
+  margin-bottom: 1px; /* Cria um espacinho entre o texto e a caixa de digitar */
 }

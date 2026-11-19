@@ -1,20 +1,9 @@
 import "./Avatar.css";
 
-function Avatar(props) {
-  const nomes = props.nome.split(" ");
-
-  const primeiroNome = nomes[0];
-  const primeiraLetraPrimeiroNome = primeiroNome[0];
-
-  let primeiraLetraUltimoNome = "";
-  if (nomes.length > 1) {
-    const ultimoNome = nomes.at(-1);
-    primeiraLetraUltimoNome = ultimoNome[0];
-  }
-
+function Avatar() {
   return (
     <div className="Avatar_root">
-      {primeiraLetraPrimeiroNome + primeiraLetraUltimoNome}
+      Kp
     </div>
   );
 }

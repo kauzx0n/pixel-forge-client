@@ -5,7 +5,7 @@ function Cabecalho() {
   return (
     <header className="Cabecalho_root">
       <img
-        src="/favicon.svg"
+        src="/image.png"
         style={{
           width: "24px",
           height: 24,

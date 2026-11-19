@@ -2,9 +2,11 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: var(--cor-cinza);
+  background-color: #dfdfdf; /* Fundo cinza clarinho */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--cor-texto-claro);
+  color: #5c16c5; /* Texto roxo */
+  font-size: 16px;
+  font-weight: bold;
 }

@@ -3,11 +3,52 @@
     padding: 16px 8px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 41px; /* AUMENTE ESTE VALOR para afastar um campo do outro */
+    color: #e2e8f0; 
 }
 
 .Principal_titulo {
     display: flex;
     align-items: center;
     gap: 4px;
+    color: #ffffff; /* Adicionado: deixa o título e a seta brancos */
+}
+/* --- BARRA DE NAVEGAÇÃO INFERIOR --- */
+.barra-navegacao {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000; /* Roxo bem escuro da imagem */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0;
+  
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #7b4fb5; /* Cor dos ícones inativos */
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-item span {
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+/* Aba selecionada */
+.nav-item.ativo {
+  color: #c084fc; /* Roxo mais claro vibrante */
+}
+
+.nav-item:hover {
+  color: #c084fc;
 }

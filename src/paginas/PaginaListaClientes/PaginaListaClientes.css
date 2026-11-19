@@ -42,3 +42,9 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+
+.PaginaListaClientes_item,
+.PaginaListaClientes_item h3,
+.PaginaListaClientes_item_acoes svg:first-child {
+  color: #1e293b;
+}
