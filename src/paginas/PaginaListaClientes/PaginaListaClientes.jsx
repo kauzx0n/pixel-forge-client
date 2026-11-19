@@ -35,10 +35,10 @@ function PaginaListaClientes() {
   });
 
   return (
-    <Principal titulo="Lista de Clientes" voltarPara="/">
+    <Principal titulo="Lista de Jogos" voltarPara="/">
       <input
         type="text"
-        placeholder="Pesquisar clientes..."
+        placeholder="Pesquisar jogos..."
         value={termoPesquisa}
         onChange={(e) => setTermoPesquisa(e.target.value)}
       />

@@ -58,60 +58,84 @@ function PaginaCadastroCliente() {
     navigate("/lista-clientes");
   };
 
-  const titulo = formCliente.id ? "Editar Cliente" : "Novo Cliente";
+  const titulo = formCliente.id ? "Editar Jogos" : "Novo jogo";
 
   return (
     <Principal titulo={titulo} voltarPara="/">
       <CampoCustomizado
-        label="Nome"
+        label="Nome Do Jogo"
         value={formCliente.nome}
         onChange={(e) =>
           setFormCliente({ ...formCliente, nome: e.target.value })
         }
         maxLength={50}
       />
+      
+        
+      
       <CampoCustomizado
-        label="Email"
-        value={formCliente.email}
+        label="Data De Lançamento"
+        type="date"
+        value={formCliente.dataLancamento}
         onChange={(e) =>
-          setFormCliente({ ...formCliente, email: e.target.value })
+          setFormCliente({ ...formCliente, dataLancamento: e.target.value })
+        }
+      />
+      <CampoCustomizado
+        label="Gênero"
+        value={formCliente.genero}
+        onChange={(e) =>
+          setFormCliente({
+            ...formCliente,
+            genero: e.target.value,
+          })
+        }
+      />
+      <CampoCustomizado
+        label="Plataforma"
+        value={formCliente.plataforma}
+        onChange={(e) =>
+          setFormCliente({
+            ...formCliente,
+            plataforma: e.target.value,
+          })
+        }
+      />
+      <CampoCustomizado
+        label="Desenvolvedora"
+        value={formCliente.desenvolvedora}
+        onChange={(e) =>
+          setFormCliente({ ...formCliente, desenvolvedora: e.target.value })
         }
         maxLength={50}
       />
       <CampoCustomizado
-        label="Data Nascimento"
-        type="date"
-        value={formCliente.dataNascimento}
-        onChange={(e) =>
-          setFormCliente({ ...formCliente, dataNascimento: e.target.value })
-        }
-      />
-      <CampoCustomizado
-        label="Telefone"
-        type="tel"
-        value={formCliente.telefone}
+        label="Nota"
+        value={formCliente.nota}
         onChange={(e) =>
           setFormCliente({
             ...formCliente,
-            telefone: formatarComMascara(e.target.value, MASCARA_TELEFONE),
+            nota: e.target.value,
           })
         }
       />
       <CampoCustomizado
-        label="CPF"
-        value={formCliente.cpf}
+        label="Tempo de Jogo"
+        value={formCliente.tempoJogo}
         onChange={(e) =>
           setFormCliente({
             ...formCliente,
-            cpf: formatarComMascara(e.target.value, MASCARA_CPF),
+            tempoJogo: e.target.value,
           })
         }
       />
+      
+
 
 <CampoCustomizado
        type="file"
        accept="image/*"
-       label="Foto"
+       label="Capa do Jogo"
        onChange={(e) => {
          const imagem = e.target.files[0];
          if (imagem) {

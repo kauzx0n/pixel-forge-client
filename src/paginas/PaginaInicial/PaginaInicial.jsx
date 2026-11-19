@@ -1,45 +1,45 @@
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
 import Principal from "../../componentes/Principal/Principal";
-import "./PaginaInicial.css"
-
 import { useNavigate } from "react-router-dom";
+import "./PaginaInicial.css"; // Certifique-se de importar o CSS da página
 
 function PaginaInicial() {
   const navigate = useNavigate();
 
   return (
-    <Principal titulo="Game-Hub Center">
-      <div className="botaoInicial_root">
-
-      <BotaoCustomizado
-        tipo="primario"
-        aoClicar={() => navigate("/lista-produtos")}
+    <Principal titulo="Página Inicial">
+      {/* Container Grid que vai deixar 2 botões por linha */}
+      <div className="container-botoes">
+        <BotaoCustomizado
+          tipo="telaInicial"
+          aoClicar={() => navigate("/lista-produtos")}
         >
-        Conquistas
-      </BotaoCustomizado>
+          Conquistas
+        </BotaoCustomizado>
 
-      <BotaoCustomizado
-        tipo="secundario"
-        aoClicar={() => navigate("/lista-tarefas")}
+        <BotaoCustomizado
+          tipo="telaInicial"
+          aoClicar={() => navigate("/lista-tarefas")}
         >
-        Lista de Tarefas
-      </BotaoCustomizado>
+          Taxa De Vitoria
+        </BotaoCustomizado>
 
-      <BotaoCustomizado
-        tipo="primario"
-        aoClicar={() => navigate("/cadastro-cliente")}
+        <BotaoCustomizado
+          tipo="telaInicial"
+          aoClicar={() => navigate("/cadastro-cliente")}
         >
-        Meus Jogos
-      </BotaoCustomizado>
+          Cadastrar Jogo
+        </BotaoCustomizado>
 
-      <BotaoCustomizado
-        tipo="secundario"
-        aoClicar={() => navigate("/lista-clientes")}
+        <BotaoCustomizado
+          tipo="telaInicial"
+          aoClicar={() => navigate("/lista-clientes")}
         >
-        Taxas Globais
-      </BotaoCustomizado>
-        </div>
+          Meus Jogos
+        </BotaoCustomizado>
+      </div>
     </Principal>
   );
 }
+
 export default PaginaInicial;

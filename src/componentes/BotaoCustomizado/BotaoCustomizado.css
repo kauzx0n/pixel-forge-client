@@ -1,24 +1,26 @@
-.BotaoCustomizado_root {
-  padding: 8px 16px;
+.BotaoCustomizado_telaInicial {
+  background-color: #1e1e24; /* Cor de fundo escura semelhante à da imagem 1 */
+  color: #ffffff; /* Texto branco */
+  border-radius: 24px; /* Bordas bem arredondadas */
   border: none;
-  border-radius: 4px;
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  /* Deixa o botão "quadradinho" e centraliza o conteúdo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px; /* Altura fixa para dar o formato de card */
+  width: 100%;
+  gap: 16px; /* Espaço entre o ícone e o texto */
+  
+  font-size: 16px;
+  font-weight: 500;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
-.BotaoCustomizado_root:hover {
+.BotaoCustomizado_telaInicial:hover {
   opacity: 0.9;
-}
-
-.BotaoCustomizado_root:active {
-  opacity: 1.1;
-}
-
-.BotaoCustomizado_primario {
-  background-color: var(--cor-primaria);
-  color: var(--cor-texto-claro);
-}
-
-.BotaoCustomizado_secundario {
-  background-color: var(--cor-secundaria);
-  color: var(--cor-texto-claro);
+  transform: scale(0.98); /* Dá um efeitinho de clique suave */
 }

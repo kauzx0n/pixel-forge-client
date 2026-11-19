@@ -1,0 +1,6 @@
+.container-botoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas do mesmo tamanho */
+  gap: 16px; /* Espaçamento entre os cards */
+  padding: 16px; /* Respiro nas bordas da tela */
+}
