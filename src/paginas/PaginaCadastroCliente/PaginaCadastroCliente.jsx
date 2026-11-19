@@ -38,23 +38,9 @@ function PaginaCadastroCliente() {
   }, [params.id]);
 
   const salvar = () => {
-    if (!formCliente.nome.trim() || !formCliente.email.trim()) {
-      toast.error("Os campos nome e email são obrigatórios!");
-      return;
-    }
-
-    if (!validarEmail(formCliente.email)) {
-      toast.error("Email inválido!");
-      return;
-    }
-
-    if (formCliente.cpf.trim() && !validarCPF(formCliente.cpf)) {
-      toast.error("CPF inválido!");
-      return;
-    }
-
+   
     salvarCliente(formCliente);
-    toast.success("Cliente salvo com sucesso!");
+    toast.success("Jogo salvo com sucesso!");
     navigate("/lista-clientes");
   };
 
