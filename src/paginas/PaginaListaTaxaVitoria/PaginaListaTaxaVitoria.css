@@ -1,0 +1,47 @@
+.PaginaListaTaxaVitoria_contador {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.PaginaListaTaxaVitoria_botao {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background-color: #9b51e0;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.PaginaListaTaxaVitoria_item {
+  background-color: #ffffff;
+  color: #1a1a2e;
+  padding: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.PaginaListaTaxaVitoria_acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.PaginaListaTaxaVitoria_btnMais {
+  background-color: #eee;
+  color: #1a1a2e;
+  border: 1px solid #ccc;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+} 

@@ -1,41 +1,41 @@
 import { useEffect, useState } from "react";
 import Principal from "../../componentes/Principal/Principal";
-import { buscarClientes } from "../../servicos/clientes.servico";
-import "./PaginaListaClientes.css";
+import { buscarJogos } from "../../servicos/jogos.servico";
+import "./PaginaListaJogos.css";
 import { MdEdit, MdDelete, MdAdd } from "react-icons/md";
 import { salvarNoLocalStorage } from "../../servicos/localstorage.servico";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-function PaginaListaClientes() {
+function PaginaListaJogos() {
   const navigate = useNavigate();
-  const [clientes, setClientes] = useState([]); // Inicia sempre como lista vazia []
+  const [Jogos, setJogos] = useState([]); // Inicia sempre como lista vazia []
   const [termoPesquisa, setTermoPesquisa] = useState("");
 
   useEffect(() => {
     const carregarDados = async () => {
-      const dados = await buscarClientes();
+      const dados = await buscarJogos();
       // Garante que só salva se realmente vier uma lista (Array)
       if (Array.isArray(dados)) {
-        setClientes(dados);
+        setJogos(dados);
       }
     };
     carregarDados();
   }, []);
 
-  const excluirCliente = (clienteParaExcluir) => {
-    if (confirm(`Deseja excluir o jogo: ${clienteParaExcluir.nome}?`)) {
-      const clientesAtualizados = clientes.filter(
-        (item) => item.id !== clienteParaExcluir.id
+  const excluirJogo = (JogoParaExcluir) => {
+    if (confirm(`Deseja excluir o jogo: ${JogoParaExcluir.nome}?`)) {
+      const JogosAtualizados = Jogos.filter(
+        (item) => item.id !== JogoParaExcluir.id
       );
-      setClientes(clientesAtualizados);
-      salvarNoLocalStorage("clientes", clientesAtualizados);
+      setJogos(JogosAtualizados);
+      salvarNoLocalStorage("Jogos", JogosAtualizados);
       toast.success("Jogo excluído com sucesso!");
     }
   };
 
-  const editarCliente = (clienteParaEditar) => {
-    navigate("/cadastro-cliente/" + clienteParaEditar.id);
+  const editarJogo = (JogoParaEditar) => {
+    navigate("/cadastro-jogo/" + JogoParaEditar.id);
   };
 
   return (
@@ -54,13 +54,13 @@ function PaginaListaClientes() {
         }}
       />
 
-      {clientes
+      {Jogos
         .filter((item) =>
           item.nome.toLowerCase().includes(termoPesquisa.toLowerCase())
         )
         .map((item, index) => {
           return (
-            <div key={index} className="PaginaListaClientes_item">
+            <div key={index} className="PaginaListaJogos_item">
               <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
                 {item.foto ? (
                   <img
@@ -95,28 +95,31 @@ function PaginaListaClientes() {
                 <h3 style={{ margin: 0 }}>{item.nome}</h3>
               </div>
 
-              <div className="PaginaListaClientes_item_acoes">
+              <div className="PaginaListaJogos_item_acoes">
                 <MdEdit
                   size={24}
                   style={{ cursor: "pointer" }}
-                  onClick={() => editarCliente(item)}
+                  onClick={() => editarJogo(item)}
                 />
                 <MdDelete
                   size={24}
                   color="red"
                   style={{ cursor: "pointer" }}
-                  onClick={() => excluirCliente(item)}
+                  onClick={() => excluirJogo(item)}
                 />
               </div>
             </div>
           );
         })}
 
-      <div className="PaginaListaClientes_botaoAdicionar">
-        <MdAdd onClick={() => navigate("/cadastro-cliente")} />
+      <div
+        className="PaginaListaJogos_botaoAdicionar"
+        onClick={() => navigate("/cadastro-jogo")}
+      >
+        <MdAdd />
       </div>
     </Principal>
   );
 }
 
-export default PaginaListaClientes;
+export default PaginaListaJogos;

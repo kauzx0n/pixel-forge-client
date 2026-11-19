@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
 import Principal from "../../componentes/Principal/Principal";
 import { toast } from "react-toastify";
-import { buscarClientes, salvarCliente } from "../../servicos/clientes.servico";
+import { buscarJogos, salvarJogo } from "../../servicos/jogos.servico";
 import { useNavigate, useParams } from "react-router-dom";
 
-function PaginaCadastroCliente() {
+function PaginaCadastroJogo() {
   const navigate = useNavigate();
   
-  const [formCliente, setFormCliente] = useState({
+  const [formJogo, setFormJogo] = useState({
     id: "",
     nome: "",
     dataLancamento: "",
@@ -26,80 +26,88 @@ function PaginaCadastroCliente() {
 
   const params = useParams();
   useEffect(() => {
-    if (params.id) {
-      const clienteParaEditar = buscarClientes().find(
-        (item) => item.id === +params.id,
-      );
-      if (clienteParaEditar) {
-        setFormCliente(clienteParaEditar);
+    const carregarJogo = async () => {
+      if (params.id) {
+        const listaJogos = await buscarJogos();
+        const jogoParaEditar = listaJogos.find(
+          (item) => item.id === +params.id
+        );
+        if (jogoParaEditar) {
+          setFormJogo(jogoParaEditar);
+        }
       }
-    }
+    };
+    carregarJogo();
   }, [params.id]);
 
-  const salvar = () => {
-    if (formCliente.nome === "") {
+  const salvar = async () => {
+    if (formJogo.nome === "") {
       toast.error("Falta o Nome do Jogo!");
       return;
     }
 
-    if (formCliente.dataLancamento === "") {
+    if (formJogo.dataLancamento === "") {
       toast.error("Falta a Data de Lançamento!");
       return;
     }
     
-    if (formCliente.genero === "") {
+    if (formJogo.genero === "") {
       toast.error("Falta o Gênero do jogo!");
       return;
     }
 
-    if (formCliente.plataforma === "") {
+    if (formJogo.plataforma === "") {
       toast.error("Falta a Plataforma!");
       return;
     }
 
-    if (formCliente.desenvolvedora === "") {
+    if (formJogo.desenvolvedora === "") {
       toast.error("Falta a Desenvolvedora!");
       return;
     }
 
-    salvarCliente(formCliente);
-    toast.success("Jogo salvo com sucesso!");
-    navigate("/lista-clientes");
+    try {
+      await salvarJogo(formJogo);
+      toast.success("Jogo salvo com sucesso!");
+      navigate("/lista-jogos");
+    } catch {
+      toast.error("Memória do navegador cheia! Limpe o LocalStorage ou use uma imagem menor.");
+    }
   };
 
-  const titulo = formCliente.id ? "Editar Jogo" : "Novo Jogo";
+  const titulo = formJogo.id ? "Editar Jogo" : "Novo Jogo";
 
   const handleNota = (e) => {
     const input = e.target.value;
     let numeros = input.replace("/10", "").replace(/\D/g, "");
 
-    if (formCliente.nota && input.length < formCliente.nota.length && numeros === formCliente.nota.replace("/10", "").replace(/\D/g, "")) {
+    if (formJogo.nota && input.length < formJogo.nota.length && numeros === formJogo.nota.replace("/10", "").replace(/\D/g, "")) {
       numeros = numeros.slice(0, -1);
     }
 
     if (numeros === "") {
-      setFormCliente({ ...formCliente, nota: "" });
+      setFormJogo({ ...formJogo, nota: "" });
       return;
     }
 
     let valorFinal = parseInt(numeros, 10);
     if (valorFinal > 10) valorFinal = 10;
-    setFormCliente({ ...formCliente, nota: `${valorFinal}/10` });
+    setFormJogo({ ...formJogo, nota: `${valorFinal}/10` });
   };
 
   const handleTempoJogo = (e) => {
     const input = e.target.value;
     let numeros = input.replace(" horas", "").replace(/\D/g, "");
 
-    if (formCliente.tempoJogo && input.length < formCliente.tempoJogo.length && numeros === formCliente.tempoJogo.replace(" horas", "").replace(/\D/g, "")) {
+    if (formJogo.tempoJogo && input.length < formJogo.tempoJogo.length && numeros === formJogo.tempoJogo.replace(" horas", "").replace(/\D/g, "")) {
       numeros = numeros.slice(0, -1);
     }
 
     if (numeros === "") {
-      setFormCliente({ ...formCliente, tempoJogo: "" });
+      setFormJogo({ ...formJogo, tempoJogo: "" });
       return;
     }
-    setFormCliente({ ...formCliente, tempoJogo: `${numeros.slice(0, 4)} horas` });
+    setFormJogo({ ...formJogo, tempoJogo: `${numeros.slice(0, 4)} horas` });
   };
 
   return (
@@ -108,9 +116,9 @@ function PaginaCadastroCliente() {
       <CampoCustomizado
         label="Nome Do Jogo"
         placeholder="Ex: The Witcher 3"
-        value={formCliente.nome}
+        value={formJogo.nome}
         onChange={(e) =>
-          setFormCliente({ ...formCliente, nome: e.target.value })
+          setFormJogo({ ...formJogo, nome: e.target.value })
         }
         maxLength={50}
       />
@@ -119,9 +127,9 @@ function PaginaCadastroCliente() {
         label="Data De Lançamento"
         type="date"
         max="9999-12-31"
-        value={formCliente.dataLancamento}
+        value={formJogo.dataLancamento}
         onChange={(e) =>
-          setFormCliente({ ...formCliente, dataLancamento: e.target.value })
+          setFormJogo({ ...formJogo, dataLancamento: e.target.value })
         }
       />
       
@@ -133,10 +141,10 @@ function PaginaCadastroCliente() {
       <CampoCustomizado
         label="Gênero"
         placeholder="Ex: RPG, Ação, Plataforma"
-        value={formCliente.genero}
+        value={formJogo.genero}
         list="lista-genero"
         onChange={(e) =>
-          setFormCliente({ ...formCliente, genero: e.target.value })
+          setFormJogo({ ...formJogo, genero: e.target.value })
         }
       />
       
@@ -148,10 +156,10 @@ function PaginaCadastroCliente() {
       <CampoCustomizado
         label="Plataforma"
         placeholder="Ex: PC, PlayStation 5, Steam"
-        value={formCliente.plataforma}
+        value={formJogo.plataforma}
         list="lista-plataforma"
         onChange={(e) =>
-          setFormCliente({ ...formCliente, plataforma: e.target.value })
+          setFormJogo({ ...formJogo, plataforma: e.target.value })
         }
       />
       
@@ -163,10 +171,10 @@ function PaginaCadastroCliente() {
       <CampoCustomizado
         label="Desenvolvedora"
         placeholder="Ex: CD Projekt Red"
-        value={formCliente.desenvolvedora}
+        value={formJogo.desenvolvedora}
         list="lista-desenvolvedora"
         onChange={(e) =>
-          setFormCliente({ ...formCliente, desenvolvedora: e.target.value })
+          setFormJogo({ ...formJogo, desenvolvedora: e.target.value })
         }
         maxLength={50}
       />
@@ -175,7 +183,7 @@ function PaginaCadastroCliente() {
         label="Nota (0 a 10) (Opcional)"
         placeholder="Ex: 8"
         type="text"
-        value={formCliente.nota}
+        value={formJogo.nota}
         onChange={handleNota}
       />
 
@@ -183,7 +191,7 @@ function PaginaCadastroCliente() {
         label="Tempo de Jogo (Opcional)"
         placeholder="Ex: 120"
         type="text"
-        value={formCliente.tempoJogo}
+        value={formJogo.tempoJogo}
         onChange={handleTempoJogo}
       />
 
@@ -197,7 +205,21 @@ function PaginaCadastroCliente() {
             if (imagem) {
               const reader = new FileReader();
               reader.onload = (event) => {
-                setFormCliente({ ...formCliente, foto: event.target.result });
+                const img = new Image();
+                img.onload = () => {
+                  const canvas = document.createElement("canvas");
+                  const maxLargura = 300;
+                  const escala = maxLargura / img.width;
+                  canvas.width = maxLargura;
+                  canvas.height = img.height * escala;
+
+                  const ctx = canvas.getContext("2d");
+                  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                  const imagemComprimida = canvas.toDataURL("image/jpeg", 0.7);
+                  setFormJogo({ ...formJogo, foto: imagemComprimida });
+                };
+                img.src = event.target.result;
               };
               reader.readAsDataURL(imagem);
             }
@@ -205,10 +227,10 @@ function PaginaCadastroCliente() {
         />
       </div>
 
-      {formCliente.foto && (
+      {formJogo.foto && (
         <div style={{ marginBottom: "20px", position: "relative", display: "inline-block" }}>
           <img
-            src={formCliente.foto}
+            src={formJogo.foto}
             alt="Capa do Jogo"
             style={{
               width: "150px",
@@ -220,7 +242,7 @@ function PaginaCadastroCliente() {
           />
 
           <button
-            onClick={() => setFormCliente({ ...formCliente, foto: "" })}
+            onClick={() => setFormJogo({ ...formJogo, foto: "" })}
             style={{
               position: "absolute",
               top: "5px",
@@ -262,4 +284,4 @@ function PaginaCadastroCliente() {
   );
 }
 
-export default PaginaCadastroCliente;
+export default PaginaCadastroJogo;

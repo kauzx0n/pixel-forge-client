@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import PaginaInicial from "./paginas/PaginaInicial/PaginaInicial";
-import PaginaListaProdutos from "./paginas/PaginaListaProdutos/PaginaListaProdutos";
-import PaginaListaTarefas from "./paginas/PaginaListaTarefas/PaginaListaTarefas";
-import PaginaCadastroCliente from "./paginas/PaginaCadastroCliente/PaginaCadastroCliente";
-import PaginaListaClientes from "./paginas/PaginaListaClientes/PaginaListaClientes";
+import PaginaListaConquistas from "./paginas/PaginaListaConquistas/PaginaListaConquistas";
+import PaginaListaTaxaVitoria from "./paginas/PaginaListaTaxaVitoria/PaginaListaTaxaVitoria";
+import PaginaCadastroJogo from "./paginas/PaginaCadastroJogo/PaginaCadastroJogo";
+import PaginaListaJogos from "./paginas/PaginaListaJogos/PaginaListaJogos";
 
 const roteador = createBrowserRouter([
   {
@@ -12,20 +12,20 @@ const roteador = createBrowserRouter([
     element: <PaginaInicial />,
   },
   {
-    path: "lista-produtos",
-    element: <PaginaListaProdutos />,
+    path: "lista-conquistas",
+    element: <PaginaListaConquistas />,
   },
   {
-    path: "lista-tarefas",
-    element: <PaginaListaTarefas />,
+    path: "lista-taxa-vitoria",
+    element: <PaginaListaTaxaVitoria />,
   },
   {
-    path: "cadastro-cliente/:id?",
-    element: <PaginaCadastroCliente />,
+    path: "cadastro-jogo/:id?",
+    element: <PaginaCadastroJogo />,
   },
   {
-    path: "lista-clientes",
-    element: <PaginaListaClientes />,
+    path: "lista-jogos",
+    element: <PaginaListaJogos />,
   },
 ]);
 

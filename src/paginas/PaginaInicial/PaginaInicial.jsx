@@ -9,51 +9,43 @@ function PaginaInicial() {
 
   return (
     <Principal>
-      
-
       <h1 style={{ textAlign: "center", marginBottom: "30px", fontSize: "32px", fontFamily: "sans-serif" }}>
         <span style={{ color: "#FFFFFF", fontWeight: "900" }}>GAME</span>
         <span style={{ color: "#a855f7", fontWeight: "900" }}>HUB</span>
       </h1>
 
       <div className="container-botoes">
-        
-
         <BotaoCustomizado
           tipo="telaInicial"
-          aoClicar={() => navigate("/lista-produtos")}
+          aoClicar={() => navigate("/lista-conquistas")}
         >
           <FaTrophy size={48} color="#f2c94c" />
           <span>Conquistas</span>
         </BotaoCustomizado>
 
-
         <BotaoCustomizado
           tipo="telaInicial"
-          aoClicar={() => navigate("/lista-tarefas")}
+          aoClicar={() => navigate("/lista-taxa-vitoria")}
         >
           <span style={{ fontSize: '32px', fontWeight: 'bold' }}>68%</span>
           <span>Taxa De Vitoria</span>
         </BotaoCustomizado>
 
-
         <BotaoCustomizado
           tipo="telaInicial"
-          aoClicar={() => navigate("/cadastro-cliente")}
+          aoClicar={() => navigate("/cadastro-jogo")}
         >
           <FaGamepad size={48} color="#9b51e0" />
           <span>Cadastrar Jogo</span>
         </BotaoCustomizado>
 
-
         <BotaoCustomizado
           tipo="telaInicial"
-          aoClicar={() => navigate("/lista-clientes")}
+          aoClicar={() => navigate("/lista-jogos")}
         >
           <FaGamepad size={48} color="#9b51e0" />
           <span>Meus Jogos</span>
         </BotaoCustomizado>
-        
       </div>
     </Principal>
   );
