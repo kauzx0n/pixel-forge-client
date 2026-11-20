@@ -15,9 +15,9 @@ export default defineConfig({
      manifest: {
        name: 'pixel forge client',
        short_name: 'pixel forge client',
-       description: 'Aplicativo de jogos em React com Vite e PWA',
-       theme_color: '#3f50b5',
-       background_color: '#f7f7f7',
+       description: 'O GameHub é uma aplicação mobile-first com uma interface premium em Dark Mode e detalhes iluminados. Desenvolvido para jogadores que desejam acompanhar seu desempenho, gerenciar suas contas e competir com amigos, o aplicativo entrega uma experiência fluida e imersiva, fortemente inspirada no ecossistema de plataformas como a Steam.',
+       theme_color: '#A83EE5',
+       background_color: '#27282B',
        display: 'standalone',
        icons: [
          {
